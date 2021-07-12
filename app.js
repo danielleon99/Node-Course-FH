@@ -1,9 +1,9 @@
+
+const { createFile } = require('./helpers/multiply');
 console.clear();
 
-console.log('==============');
-console.log('Table of 5');
-console.log('==============');
+const base = 10;
 
-for (let i = 1; i < 11; i++){
-  console.log(`5 x ${i} = ${5 * i}`);  
-};
+createFile(base)
+  .then( res => console.log(res))
+  .catch( err => console.log(err))
