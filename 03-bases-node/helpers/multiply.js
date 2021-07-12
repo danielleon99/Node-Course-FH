@@ -1,24 +1,28 @@
 const fs = require('fs');
+const colors = require('colors');
 
-const createFile = async (base) => {
+const createFile = async (base = 5, show = false, limit = 10) => {
     
     try {  
 
-    console.log('==============');
-    console.log('Table of:', base);
-    console.log('==============');
-
     let output = '';
-    for (let i = 1; i < 11; i++) {
-        output += `${base} x ${i} = ${base * i}\n`;
+    for (let i = 1; i <= limit; i++) {
+        output += `${base} ${'x'} ${i} ${'='} ${base * i}\n`;
     };
 
 
-        fs.writeFile(`Table-${base}.txt`, output, (err) => {
+        fs.writeFile(`./outputs/Table-${base}.txt`, output, (err) => {
             if (err) throw err;
         });
 
-        return `File 'Table-${base}' created successfully`;
+        if (show) {
+            console.log('=============='.green);
+            console.log('Table of:'.green, base);
+            console.log('=============='.green);
+            console.log(output);
+        }
+    
+        return `File 'Table-${base}' created successfully`.rainbow;
 
     } catch (error) {
         console.log("Error");

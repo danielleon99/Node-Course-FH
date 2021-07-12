@@ -1,11 +1,9 @@
 const { createFile } = require('./helpers/multiply');
+const argv = require('./config/yargs.js');
+
 console.clear();
 
-const base = 10;
+createFile(argv.b, argv.s, argv.l)
+  .then( file => console.log(file))
+  .catch( err => console.log(err))
 
-/*
-createFile(base)
-  .then( res => console.log(res))
-  .catch( err => console.log(err))*/
-
-  
